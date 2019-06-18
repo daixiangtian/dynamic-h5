@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport"
+        content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+  <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+  <title>农产品H5动态</title>
+    <link rel="stylesheet" type="text/css"  href="http://at.alicdn.com/t/font_1244968_8ww72vy9sdd.css"/>
+  <script>
+    /** 适应移动端UI */
+    (function (doc, win) {
+      var docEl = doc.documentElement,
+        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+        recalc = function () {
+          var clientWidth = docEl.clientWidth
+          if (!clientWidth) return
+          docEl.style.fontSize = 100 * (clientWidth / 750) + 'px'
+          //750是设计图的宽度,10是一个基准宽度(html的font-size值)
+        }
+
+      if (!doc.addEventListener) return
+      win.addEventListener(resizeEvt, recalc, false)
+      doc.addEventListener('DOMContentLoaded', recalc, false)
+    })(document, window)
+
+    /*---改变缩放比---*/
+    var iScale = 1
+    iScale = iScale / window.devicePixelRatio
+  </script>
+</head>
+<body>
+<div id="app"></div>
+</body>
+</html>
