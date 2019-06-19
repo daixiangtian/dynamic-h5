@@ -16,11 +16,11 @@
     props: {
       width: {
         type: Number,
-        default: 45
+        default:0
       },
       height: {
         type: Number,
-        default: 45
+        default: 0
       },
       src: {
         type: String,
@@ -120,8 +120,8 @@
         this.unit != 'rem' && (this.multiple = 1)
 
         return {
-          width: this.width / this.multiple + this.unit,
-          height: this.height / this.multiple + this.unit,
+          width: this.width ? this.width / this.multiple + this.unit : '',
+          height: this.height ? this.height / this.multiple + this.unit : '',
           minWidth: this.width / this.multiple + this.unit,
           minHeight: this.height / this.multiple + this.unit,
           borderRadius: this.fillet / this.multiple + this.unit,

@@ -1,10 +1,9 @@
 <template>
-
-  <div ref="firstBox" class=" trn-2">
-    <h5-div h="100vh" posi-r ref="firstPage">
+  <h5-div posi-f t0 b0 l0 r0 over-a ref="box">
+    <h5-div mi-h="100vh" posi-r ref="firstPage">
       <img :src="bgs[0]" w100 h100 posi-a t0 l0 :class="show?'d-n trn-1':'flicker'"/>
       <h5-div flex-center posi-r t-c :pad="[200,0,0]">
-        <img :src="peach" class="trn-1" :class="[show&&'scale-x-y-8']" width="250"/>
+        <img :src="peach" class="trn-1" :class="[show&&'scale-x-y-8']" :width="250"/>
         <img :src="peach1" posi-a l0 t0 class=" trn-1 h-320" :class="[!show&&'mar-t-0320']"/>
         <img :src="peach2" posi-a r0 t0 class=" trn-1 h-300 mar-r-30" :class="[!show&&'mar-t-0320']"/>
         <img :src="peach3" posi-a l0 t40 class="w-160 trn-1" :class="[!show&&'mar-l-0160']"/>
@@ -21,7 +20,7 @@
           <h5-div :bg="`url(${knowDetails})no-repeat 0 0/100% 100%`" class="up-dwon" :h="120" :w="400"/>
         </h5-div>
       </div>
-      <h5-div class=" trn-3" :class="showInfo?'op-0':'op-1'">
+      <h5-div class=" trn-1" :class="showInfo?'op-0':'op-1'">
         <h5-div :w="500" :mar="[0,'auto']" flex-x-center color="#fff" :h="50" :pad="[40,0,0]"
                 :bg="`url(${query})no-repeat 0 0/100% 100%`">
           您当前查询的是麻阳高山“锦绣”黄桃信息
@@ -97,16 +96,45 @@
           </h5-div>
         </h5-div>
 
-        <
+        <h5-div :pad="[30,0,0]" posi-r :h="264">
+          <div v-if="pageConfig.showSunAndMoon">
+            <h5-div posi-a l0 class="sun parabola">
+              <h5-img :src="sun" type="fidelity"
+                      :width="264"></h5-img>
+            </h5-div>
+            <h5-div posi-a r0 class="moon parabola" :mar="[0,50,0]">
+              <h5-img :src="moon" type="fidelity"
+                      :width="200"></h5-img>
+            </h5-div>
+          </div>
+        </h5-div>
+
         <h5-div flex-center>
           <h5-img :src="forest" type="fidelity" :width="680"/>
         </h5-div>
 
+        <h5-div flex flex-center>
+          <h5-div flex>
+            <h5-div :w="150" flex-center flex :h="150" :fillet="200"
+                    v-for="(item,key) in pageConfig.tabConfig" :key="key"
+                    @click="pageConfig.index = key"
+                    :br="pageConfig.index == key?`1px solid green`:'1px solid #999'" :mar="[0,30]">
+              <h5-div t-c>
+                <h5-div>
+                  <h5-div :font-size="56" :mar="[0,0,10]" class="iconfont"
+                          :class="[pageConfig.index == key?'col-main':'col-9',item.icon]"></h5-div>
+                </h5-div>
+                <h5-div :class="pageConfig.index == key?'col-main':'col-9'">{{item.name}}</h5-div>
+              </h5-div>
+            </h5-div>
+
+          </h5-div>
+
+        </h5-div>
 
       </h5-div>
     </div>
-  </div>
-
+  </h5-div>
 </template>
 <script>
   import H5Div from "../../components/public/h5-div";
@@ -129,6 +157,7 @@
   import query from "../../assets/images/first/query.png"
   import forest from "../../assets/images/first/forest.png"
   import sun from "../../assets/images/first/sun.png"
+  import moon from "../../assets/images/first/moon.png"
 
 
   import knowDetails from "../../assets/images/first/know-details.png"
@@ -157,29 +186,35 @@
         peach8,
         query,
         forest,
-        sun
-
+        sun, moon,
+        pageConfig: {
+          showSunAndMoon: false,
+          index: 0,
+          tabConfig: [
+            {name: '数量', icon: 'icon-shuye'},
+            {name: '温度', icon: 'icon-wendu'},
+            {name: '气候', icon: 'icon-taiyang-copy'},
+          ]
+        }
       }
     },
     methods: {
       bindTouch() {
         if (this.$refs.firstPage) {
-          console.log("this.$refs.firstPage", this.$refs.firstPage.$el)
           const dom = this.$refs.firstPage.$el,
             that = this;
+
+          dom.parentNode.onscroll = this.scrollHandel
           this.touch({
             dom,
             change(e, off) {
-              console.log(e);
               if (e.direction == 'up') {
                 console.log("开始执行动画")
                 that.show = true;
                 off();  //释放元素的touch事件
-                that.bindOneHandle();
                 setTimeout(() => {
                   that.showInfo = false
                 }, 1000)
-
               }
             }
           });
@@ -187,21 +222,10 @@
           window.requestAnimationFrame(this.bindTouch)
         }
       },
-      bindOneHandle() {
-        if (this.$refs.firstBox) {
-          const dom = this.$refs.firstBox;
-          let index = 0;
-          this.touch({
-            dom,
-            change(e) {
-              if (e.direction == 'up') {
-                index--;
-              } else if (e.direction == 'down') {
-                index++;
-              }
-              dom.style.transform = `translateY(${index * window.screen.height}px)`
-            }
-          })
+      scrollHandel(e) {
+        let top = this.$refs.box.$el.scrollTop;
+        if (top > (2 - 1) * window.screen.height) {
+          this.pageConfig.showSunAndMoon = true
         }
       }
     },

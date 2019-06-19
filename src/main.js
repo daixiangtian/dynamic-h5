@@ -3,18 +3,19 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-
+import VueScroller from "vue-scroller"
 
 import {PlugIn} from './plugIn/plugin'
 
 Vue.config.productionTip = false
 
 Vue.use(PlugIn)
+Vue.use(VueScroller)
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
-  components: { App },
+  components: {App},
   template: '<App/>'
 })
