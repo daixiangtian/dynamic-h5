@@ -16,7 +16,7 @@
     props: {
       width: {
         type: Number,
-        default:0
+        default: 0
       },
       height: {
         type: Number,
@@ -54,6 +54,14 @@
           ph = parent.clientHeight,
           w = item.width,
           h = item.height;
+
+        if (!this.width && !this.height) {
+          parent.style.height = 'inherit'
+          item.style.width = "100%"
+          item.style.display = "block"
+          return false
+        }
+
 
         if (this.type == 'fill') {
           item.style.width = "100%";
@@ -109,6 +117,23 @@
             }
           } else {
             item.style.height = '100%'
+          }
+        } else if (this.width < this.height) {
+          console.log("----------")
+          if (w == h) {
+            item.style.height = "100%"
+          } else if (w > h) {
+            if (w > pw) {
+              if (pw / w * h > ph) {
+                item.style.height = "100%"
+              } else {
+                item.style.width = "100%"
+              }
+            } else {
+              item.style.width = "100%"
+            }
+          } else if (w < h) {
+            item.style.width = "100%"
           }
         }
         item.style.display = 'block'

@@ -1,4 +1,5 @@
 $mainColor: var(--mainColor);
+
 * {
   margin: 0;
   padding: 0;
@@ -72,6 +73,11 @@ $mainColor: var(--mainColor);
 *[flex-0] {
   flex: 0;
 }
+
+*[flex-wrap]{
+  flex-wrap: wrap;
+}
+
 
 *[t-l] {
   text-align: left;
@@ -321,6 +327,10 @@ $mainColor: var(--mainColor);
   margin-right: 30px;
 }
 
+*[font-wb]{
+  font-weight: bold;
+}
+
 .op-0 {
   opacity: 0;
 }
@@ -374,5 +384,3 @@ $mainColor: var(--mainColor);
     transform: translateY(0px) translateY(0px)
   }
 }
-
-

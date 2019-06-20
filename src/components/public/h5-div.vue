@@ -19,7 +19,7 @@
    *  在代码美感度上的话，有着折扣，有时会在浏览器上面进行调试，不是那么的如意
    *
    *  例：
-   *    <dd-layout-div :w="5" :h="5" class="flex" style="background:red">
+   *    <dd-layout-div :width="5" :height="5" class="flex" style="background:red">
    *        这里是组件的内容部分
    *    </dd-layout-div>
    *
@@ -27,7 +27,7 @@
    * */
   export default {
     props: {
-      w: {  //宽
+      width: {  //宽
         type: Number,
         default: null,
       },
@@ -37,7 +37,7 @@
       miH: {
         default: null
       },
-      h: {  //高
+      height: {  //高
         default: null,
       },
       bg: { //背景
@@ -106,8 +106,8 @@
 
         this.unit != 'rem' && (this.multiple = 1)
 
-        this.w && (this.style.width = this.getType(this.w, 'number') ? this.w / this.multiple + this.unit : this.w)
-        this.h && (this.style.height = this.getType(this.h, 'number') ? this.h / this.multiple + this.unit : this.h)
+        this.width && (this.style.width = this.getType(this.width, 'number') ? this.width / this.multiple + this.unit : this.width)
+        this.height && (this.style.height = this.getType(this.height, 'number') ? this.height / this.multiple + this.unit : this.height)
 
         this.bg && (this.style.background = this.bg)
         this.op && (this.style.opacity = this.op);

@@ -1,7 +1,7 @@
 <template>
   <h5-div id="app" over-h w100>
     <router-view/>
-    <Footer  :config="footer.footerConfig" v-model="footer.index" @change="footerChange"></Footer>
+    <Footer :config="footer.footerConfig" v-model="footer.index" @change="footerChange"></Footer>
   </h5-div>
 </template>
 
@@ -16,23 +16,26 @@
     components: {H5Div, Footer},
     data() {
       return {
-        footer:{
-          index:0,
+        footer: {
+          index: 0,
           footerConfig: [
-            {name: '溯源信息', icon: Icon.source,path:'/first'},
-            {name: '追溯流程', icon: Icon.process,path:'/second'},
-            {name: '立即购买', icon: Icon.store,path:'/third'},
-            {name: '联系我们', icon: Icon.contact,path:'/fourth'}
+            {name: '溯源信息', icon: Icon.source, path: '/first'},
+            {name: '追溯流程', icon: Icon.process, path: '/second'},
+            {name: '立即购买', icon: Icon.store, path: '/third'},
+            {name: '联系我们', icon: Icon.contact, path: '/fourth'}
           ]
         }
       }
     },
-    methods:{
-      footerChange(item){
+    methods: {
+      footerChange(item) {
         this.goPointPage(item.path)
       }
     },
     created() {
+      if (this.$route.path == "/") {
+        this.goPointPage("/first")
+      }
 
       this.setMainColor('green')
     }

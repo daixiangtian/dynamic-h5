@@ -1,5 +1,11 @@
 <template>
-  <h5-div posi-f t0 b0 l0 r0 over-a ref="box">
+  <h5-div class="posi-a" posi-f t0 b0 l0 r0 over-a ref="box" >
+
+
+
+    <div class="posi-a" posi-f></div>
+
+
     <h5-div mi-h="100vh" posi-r ref="firstPage">
       <img :src="bgs[0]" w100 h100 posi-a t0 l0 :class="show?'d-n trn-1':'flicker'"/>
       <h5-div flex-center posi-r t-c :pad="[200,0,0]">
@@ -11,24 +17,24 @@
       </h5-div>
       <div posi-r class="trn-1" :class="[show&&'desc-n']" v-if="showInfo">
         <h5-div :fontSize="48" class="col-main" t-c fon-wb>麻阳高山“锦绣”黄桃</h5-div>
-        <h5-div color="#fff" :fontSize="22" class="bg-main" :mar="[16,100]" :h="40" flex-center t-c>
+        <h5-div color="#fff" :fontSize="22" class="bg-main" :mar="[16,100]" :height="40" flex-center t-c>
           颜色红颜・肉质饱满・果汁浓甜・纯香绕口
         </h5-div>
         <h5-div class="col-main" :fontSize="33" :mar="[50,0,30]" t-c>种植在平均海拔500米以上的山坡</h5-div>
         <h5-div fon-wb :fontSize="37" flex-center class="col-main">富硒小分子团水滋养的优质好果</h5-div>
         <h5-div flex-center>
-          <h5-div :bg="`url(${knowDetails})no-repeat 0 0/100% 100%`" class="up-dwon" :h="120" :w="400"/>
+          <h5-div :bg="`url(${knowDetails})no-repeat 0 0/100% 100%`" class="up-dwon" :height="120" :width="400"/>
         </h5-div>
       </div>
       <h5-div class=" trn-1" :class="showInfo?'op-0':'op-1'">
-        <h5-div :w="500" :mar="[0,'auto']" flex-x-center color="#fff" :h="50" :pad="[40,0,0]"
-                :bg="`url(${query})no-repeat 0 0/100% 100%`">
+        <h5-div :width="500" :mar="[0,'auto']" flex-x-center color="#fff" :height="50" :pad="[40,0,0]"
+                :bg="`url(${query})no-repeat 0 0/100% 100%`" :font-size="18">
           您当前查询的是麻阳高山“锦绣”黄桃信息
         </h5-div>
         <h5-div :fontSize="28" font-weight="bold" t-c :mar="[60,0,20]">
           源自中国最美养生栖据地、中国长寿之乡
         </h5-div>
-        <h5-div font-size="18" :line-height="36" :w="500" :mar="[0,'auto']">
+        <h5-div font-size="18" :line-height="36" :width="500" :mar="[0,'auto']">
           没立方厘米负氧离子7000个以上，天然氧吧地
           磁强度平均6.48高斯，天然磁化场！独特地理
           小气候孕育出卓而不凡的优秀品质
@@ -64,7 +70,7 @@
       />
     </h5-div>
     <div v-if="show">
-      <h5-div h="100vh">
+      <h5-div height="100vh">
         <h5-div flex-center :pad="[100,0,0]">
           <h5-img :width="117" type="fill" :height="125" :src="face"/>
           <h5-div t-c :mar="[0,30]">
@@ -77,18 +83,18 @@
         </h5-div>
         <h5-div flex-x-center :mar="[50,0]" posi-r>
           <h5-img :src="map" type="fidelity" :width="680"/>
-          <h5-div posi-a b0 color="#fff" :mar="[0,0,140,100]" font-size="28" t-c flex-column flex-y-center>
-            <h5-img :src="location" type="fidelity" class="up-dwon"/>
+          <h5-div posi-a b0 color="#fff" :mar="[0,0,140,100]" font-size="20" t-c flex-column flex-y-center>
+            <h5-img :src="location" type="fidelity" :width="48" class="up-dwon"/>
             湖南麻阳
           </h5-div>
         </h5-div>
       </h5-div>
 
 
-      <h5-div h="100vh">
-        <h5-div flex :pad="[200,120,0]">
+      <h5-div height="100vh">
+        <h5-div flex :pad="[150,120,0]">
           <h5-img :width="117" type="fill" :height="125" :src="face"/>
-          <h5-div t-c :mar="[-125,30,0]" :w="450">
+          <h5-div t-c :mar="[-75,30,0]" :width="450">
             <h5-div fontSize="30" class="col-main" :mar="[0,0,20]" flex-center>
               麻阳基地介绍
             </h5-div>
@@ -96,7 +102,7 @@
           </h5-div>
         </h5-div>
 
-        <h5-div :pad="[30,0,0]" posi-r :h="264">
+        <h5-div :pad="[30,0,0]" posi-r :height="200">
           <div v-if="pageConfig.showSunAndMoon">
             <h5-div posi-a l0 class="sun parabola">
               <h5-img :src="sun" type="fidelity"
@@ -104,7 +110,7 @@
             </h5-div>
             <h5-div posi-a r0 class="moon parabola" :mar="[0,50,0]">
               <h5-img :src="moon" type="fidelity"
-                      :width="200"></h5-img>
+                      :width="220"></h5-img>
             </h5-div>
           </div>
         </h5-div>
@@ -115,7 +121,7 @@
 
         <h5-div flex flex-center>
           <h5-div flex>
-            <h5-div :w="150" flex-center flex :h="150" :fillet="200"
+            <h5-div :width="150" flex-center flex :height="150" :fillet="200"
                     v-for="(item,key) in pageConfig.tabConfig" :key="key"
                     @click="pageConfig.index = key"
                     :br="pageConfig.index == key?`1px solid green`:'1px solid #999'" :mar="[0,30]">
