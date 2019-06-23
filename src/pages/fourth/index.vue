@@ -6,7 +6,7 @@
       </h5-div>
       <h5-div flex-center >
         <h5-div :font-size="88" :color="(star>0 && i <= star )?'#f7a30f':'#d2d2d2'" :pad="[0,10]" @click="star = i"
-                v-for="i in 5">★
+                v-for="i in 5" :key="i">★
         </h5-div>
       </h5-div>
       <h5-div color="#f7a30f" t-c :font-size="30">主人请对这桃子进行打分</h5-div>
@@ -39,6 +39,8 @@
   import peach from '../../assets/images/fourth/peach.png'
   import qrcode from '../../assets/images/fourth/qrcode.png'
 
+  import {mapActions} from 'vuex'
+
   export default {
     components: {H5Img, H5Div},
     data() {
@@ -48,10 +50,13 @@
         star: 0
       }
     },
-    computed: {
-      getStar() {
+    methods:{
+      ...mapActions(['getfemaleName']),
+    },
+    async created() {
+      const result = await this.getfemaleName();
 
-      }
+      console.log("請求的結果",result)
     }
   }
 </script>
