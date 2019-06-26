@@ -1,11 +1,5 @@
 <template>
-  <h5-div class="posi-a" posi-f t0 b0 l0 r0 over-a ref="box" >
-
-
-
-    <div class="posi-a" posi-f></div>
-
-
+  <h5-div class="posi-a trn-05" posi-f t0 b0 l0 r0 ref="box">
     <h5-div mi-h="100vh" posi-r ref="firstPage">
       <img :src="bgs[0]" w100 h100 posi-a t0 l0 :class="show?'d-n trn-1':'flicker'"/>
       <h5-div flex-center posi-r t-c :pad="[200,0,0]">
@@ -102,16 +96,24 @@
           </h5-div>
         </h5-div>
 
-        <h5-div :pad="[30,0,0]" posi-r :height="200">
+        <h5-div :pad="[30,0,0]" posi-r z5 :height="200">
           <div v-if="pageConfig.showSunAndMoon">
             <h5-div posi-a l0 class="sun parabola">
               <h5-img :src="sun" type="fidelity"
                       :width="264"></h5-img>
             </h5-div>
-            <h5-div posi-a r0 class="moon parabola" :mar="[0,50,0]">
-              <h5-img :src="moon" type="fidelity"
-                      :width="220"></h5-img>
+            <!--            <h5-div posi-a r0 class="moon parabola" :mar="[0,50,0]">-->
+            <!--              <h5-img :src="moon" type="fidelity"-->
+            <!--                      :width="220"></h5-img>-->
+            <!--            </h5-div>-->
+
+            <h5-div class="cloud" posi-a r0 :mar="[120,0,0,-50]">
+              <h5-div  :bg="`url(${cloud})no-repeat 0 0 / 100% 100%`" :width="300"
+                      :height="115"/>
+              <h5-div :bg="`url(${rains[rainIndex]})no-repeat 0 0/ 100% 100%`" :width="283" :height="182"/>
             </h5-div>
+
+
           </div>
         </h5-div>
 
@@ -164,7 +166,13 @@
   import forest from "../../assets/images/first/forest.png"
   import sun from "../../assets/images/first/sun.png"
   import moon from "../../assets/images/first/moon.png"
-
+  import cloud from "../../assets/images/first/cloud.png"
+  import rain1 from "../../assets/images/first/rain1.png"
+  import rain2 from "../../assets/images/first/rain2.png"
+  import rain3 from "../../assets/images/first/rain3.png"
+  import rain4 from "../../assets/images/first/rain4.png"
+  import rain5 from "../../assets/images/first/rain5.png"
+  import rain6 from "../../assets/images/first/rain6.png"
 
   import knowDetails from "../../assets/images/first/know-details.png"
   import H5Img from "../../components/public/h5-img";
@@ -181,7 +189,9 @@
           more,
           forest
         ],
-        face, map, location, peach, knowDetails,
+        rains: [rain1, rain2, rain3, rain4, rain5, rain6],
+        rainIndex: 0,
+        face, map, location, peach, knowDetails, cloud,
         peach1,
         peach2,
         peach3,
@@ -193,6 +203,7 @@
         query,
         forest,
         sun, moon,
+        index: 0,
         pageConfig: {
           showSunAndMoon: false,
           index: 0,
@@ -209,7 +220,6 @@
         if (this.$refs.firstPage) {
           const dom = this.$refs.firstPage.$el,
             that = this;
-
           dom.parentNode.onscroll = this.scrollHandel
           this.touch({
             dom,
@@ -220,6 +230,7 @@
                 off();  //释放元素的touch事件
                 setTimeout(() => {
                   that.showInfo = false
+                  that.touchHandle()
                 }, 1000)
               }
             }
@@ -228,16 +239,75 @@
           window.requestAnimationFrame(this.bindTouch)
         }
       },
-      scrollHandel(e) {
-        let top = this.$refs.box.$el.scrollTop;
-        if (top > (2 - 1) * window.screen.height) {
-          this.pageConfig.showSunAndMoon = true
-        }
+      touchHandle() {
+        console.log(this.$refs.box)
+        const dom = this.$refs.box.$el,
+          self = this;
+        console.log(dom)
+        let Y = 0;
+        this.touch({
+          dom,
+          start({y}) {
+            Y = dom.style.transform ? parseFloat(dom.style.transform.split("(")[1]) : 0;
+
+            console.log("y===>", Y)
+            dom.style.transition = '0ms'
+          },
+          move({dy}) {
+            dom.style.transform = `translateY(${dy + Y}px)`
+          },
+          change({direction}) {
+            dom.style.transition = '500ms'
+            switch (direction) {
+              case 'up':
+                self.index--;
+                if (self.index <= -2) {
+                  if (!self.pageConfig.showSunAndMoon) {
+
+                    function runRain() {
+                      self.rainTimeout = setTimeout(() => {
+                        self.rainIndex++
+                        self.rainIndex = self.rainIndex % self.rains.length;
+                        runRain()
+                      }, 180)
+                    }
+
+                    runRain();
+
+                  }
+                  self.pageConfig.showSunAndMoon = true
+
+
+                  self.index = -2
+                }
+                break;
+              case 'down':
+                self.index++;
+                if (self.index >= 0) {
+                  self.index = 0
+                }
+                break;
+            }
+
+
+            dom.style.transform = `translateY(${self.index * window.screen.height}px)`
+          }
+        })
+
+
       }
+      // scrollHandel(e) {
+      //   let top = this.$refs.box.$el.scrollTop;
+      //   if (top > (2 - 1) * window.screen.height) {
+      //     this.pageConfig.showSunAndMoon = true
+      //   }
+      // }
     },
     created() {
-      setTimeout(this.bindTouch, 100)
-
+      this.bindTouch()
+    },
+    destroyed() {
+      clearTimeout(this.rainTimeout)
     }
   }
 </script>

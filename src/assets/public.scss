@@ -74,7 +74,7 @@ $mainColor: var(--mainColor);
   flex: 0;
 }
 
-*[flex-wrap]{
+*[flex-wrap] {
   flex-wrap: wrap;
 }
 
@@ -120,6 +120,26 @@ $mainColor: var(--mainColor);
 *[posi-a] {
   position: absolute;
   z-index: 0;
+}
+
+*[z1] {
+  z-index: 1 !important;
+}
+
+*[z2] {
+  z-index: 2 !important;
+}
+
+*[z3] {
+  z-index: 3 !important;
+}
+
+*[z4] {
+  z-index: 4 !important;
+}
+
+*[z5] {
+  z-index: 5 !important;
 }
 
 *[t0] {
@@ -178,10 +198,11 @@ $mainColor: var(--mainColor);
   height: 100%;
 }
 
-.col-e{
+.col-e {
   color: #eee;
 }
-.col-9{
+
+.col-9 {
   color: #999;
 }
 
@@ -232,6 +253,10 @@ $mainColor: var(--mainColor);
   100% {
     transform: translateY(0);
   }
+}
+
+.trn-05 {
+  transition: all 0.5s;
 }
 
 .trn-1 {
@@ -327,7 +352,7 @@ $mainColor: var(--mainColor);
   margin-right: 30px;
 }
 
-*[font-wb]{
+*[font-wb] {
   font-weight: bold;
 }
 
@@ -372,6 +397,16 @@ $mainColor: var(--mainColor);
   animation: ParabolaChild 2s ease-in forwards;
 }
 
+.cloud {
+  transform: translateX(300px);
+  animation: cloud 2s ease-in forwards;
+}
+
+@keyframes cloud {
+  to {
+    transform: translateX(0px);
+  }
+}
 
 @keyframes Parabola {
   to {
