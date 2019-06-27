@@ -28,7 +28,6 @@
   export default {
     props: {
       width: {  //宽
-        type: Number,
         default: null,
       },
       miW: {

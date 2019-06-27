@@ -61,8 +61,11 @@ $mainColor: var(--mainColor);
 *[flex-row] {
   flex-direction: row;
 }
+*[flex-bt]{
+  justify-content: space-between;
+}
 
-*[flex-bt] {
+*[flex-sa] {
   justify-content: space-around;
 }
 
@@ -196,6 +199,10 @@ $mainColor: var(--mainColor);
 
 *[h100] {
   height: 100%;
+}
+
+*[trn-rotate-y-180]{
+  transform: rotateY(180deg);
 }
 
 .col-e {

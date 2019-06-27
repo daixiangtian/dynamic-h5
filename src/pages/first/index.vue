@@ -86,7 +86,7 @@
 
 
       <h5-div height="100vh">
-        <h5-div flex :pad="[150,120,0]">
+        <h5-div flex :pad="[120,120,0]">
           <h5-img :width="117" type="fill" :height="125" :src="face"/>
           <h5-div t-c :mar="[-75,30,0]" :width="450">
             <h5-div fontSize="30" class="col-main" :mar="[0,0,20]" flex-center>
@@ -95,9 +95,8 @@
             <h5-div fontSize="30" font-weight="bold" col-main>2019年气候追溯</h5-div>
           </h5-div>
         </h5-div>
-
         <h5-div :pad="[30,0,0]" posi-r z5 :height="200">
-          <div v-if="pageConfig.showSunAndMoon">
+          <div v-if="pageConfig.index == 2">
             <h5-div posi-a l0 class="sun parabola">
               <h5-img :src="sun" type="fidelity"
                       :width="264"></h5-img>
@@ -108,18 +107,83 @@
             <!--            </h5-div>-->
 
             <h5-div class="cloud" posi-a r0 :mar="[120,0,0,-50]">
-              <h5-div  :bg="`url(${cloud})no-repeat 0 0 / 100% 100%`" :width="300"
+              <h5-div :bg="`url(${cloud})no-repeat 0 0 / 100% 100%`" :width="300"
                       :height="115"/>
               <h5-div :bg="`url(${rains[rainIndex]})no-repeat 0 0/ 100% 100%`" :width="283" :height="182"/>
             </h5-div>
-
-
           </div>
         </h5-div>
+
+
+        <h5-div flex flex-center posi-r z5 :mar="[0,0,-170]">
+          <h5-div flex flex-bt :width="600" class="trn-2 op-0" :class="pageConfig.index == 0 &&'op-1'">
+            <h5-div class="up-dwon" :bg="`url(${orchard2})no-repeat 0 0 / 100% 100%`" :width="150" :height="180"
+                    :mar="[-40,0,0]"/>
+            <h5-div class="up-dwon" :bg="`url(${orchard3})no-repeat 0 0 / 100% 100%`" :width="160" :height="180"
+                    :mar="[-80,0,0]"/>
+            <h5-div class="up-dwon" :bg="`url(${orchard1})no-repeat 0 0 / 100% 100%`" :width="150" :height="180"/>
+          </h5-div>
+        </h5-div>
+
 
         <h5-div flex-center>
           <h5-img :src="forest" type="fidelity" :width="680"/>
         </h5-div>
+
+        <h5-div flex flex-bt flex-y-center>
+          <h5-div
+            @click="changeTab()"
+            :width="63" flex flex-center trn-rotate-y-180 :height="143"
+            :bg="`url(${butbg})no-repeat 0 0 / 100% 100%`">
+            <h5-div :bg="`url(${arrow})no-repeat 0 0 / 100% 100%`" :width="23" :height="42"/>
+          </h5-div>
+          <h5-div>
+            <h5-div flex flex-center posi-r class="trn-1" :class="pageConfig.index == 1?'op-1':'op-0'">
+              <h5-div posi-a :mar="[-500,0,0]" :width="680">
+                <h5-div flex posi-a flex-bt :mar="[-180,0,0]" width="100%">
+                  <h5-div posi-a l0 class="sun " :class="pageConfig.index == 1?'parabola':''">
+                    <h5-img :src="sun" type="fidelity"
+                            :width="264"></h5-img>
+                  </h5-div>
+                  <h5-div posi-a r0 class="moon"  :class="pageConfig.index == 1?'parabola':''" :mar="[0,50,0]">
+                    <h5-img :src="moon" type="fidelity"
+                            :width="220"></h5-img>
+                  </h5-div>
+                </h5-div>
+                <h5-div :width="200" class="up-dwon" :mar="[0,'auto']" :height="126" flex-x-end flex flex-y-center
+                        :bg="`url(${comment1})no-repeat 0 0 / 100% 100%`">
+                  <h5-div t-c width="100%">
+                    <h5-div color="#434343" :pad="[0,30,0,0]" t-r>昼夜最大温差</h5-div>
+                    <h5-div t-r color="#79bc1f" :pad="[0,30,0,0]" :font-size="30">21℃</h5-div>
+                  </h5-div>
+                </h5-div>
+              </h5-div>
+
+              <h5-div :width="180" :height="126" flex-x-end :mar="[0,30,0,0]" flex flex-y-center
+                      :bg="`url(${comment2})no-repeat 0 0 / 100% 100%`">
+                <h5-div t-r width="100%">
+                  <h5-div color="#434343" :pad="[0,30,0,0]" t-r>年平均气温</h5-div>
+                  <h5-div color="#79bc1f" :pad="[0,30,0,0]" :font-size="30">19℃</h5-div>
+                </h5-div>
+
+              </h5-div>
+              <h5-div :bg="`url(${thermometerAsh})no-repeat 0 0 / 100% 100%`" flex flex-y-center :width="329"
+                      :height="18">
+                <h5-div class="trn-2" over-h :width="pageConfig.index == 1?329:10" :height="15">
+                  <h5-div :bg="`url(${thermometerRed})no-repeat 0 0 / 100% 100% `" :width="221" :height="15"/>
+                </h5-div>
+
+              </h5-div>
+            </h5-div>
+          </h5-div>
+
+          <h5-div
+            @click="changeTab(true)"
+            :width="63" flex flex-center :height="143" :bg="`url(${butbg})no-repeat 0 0 / 100% 100%`">
+            <h5-div :bg="`url(${arrow})no-repeat 0 0 / 100% 100%`" :width="23" :height="42"/>
+          </h5-div>
+        </h5-div>
+
 
         <h5-div flex flex-center>
           <h5-div flex>
@@ -173,6 +237,15 @@
   import rain4 from "../../assets/images/first/rain4.png"
   import rain5 from "../../assets/images/first/rain5.png"
   import rain6 from "../../assets/images/first/rain6.png"
+  import thermometerAsh from "../../assets/images/first/thermometer-ash.png"
+  import thermometerRed from "../../assets/images/first/thermometer-red.png"
+  import butbg from "../../assets/images/first/butbg.png"
+  import arrow from "../../assets/images/first/arrow.png"
+  import orchard1 from "../../assets/images/first/orchard1.png"
+  import orchard2 from "../../assets/images/first/orchard2.png"
+  import orchard3 from "../../assets/images/first/orchard3.png"
+  import comment1 from "../../assets/images/first/comment1.png"
+  import comment2 from "../../assets/images/first/comment2.png"
 
   import knowDetails from "../../assets/images/first/know-details.png"
   import H5Img from "../../components/public/h5-img";
@@ -191,7 +264,12 @@
         ],
         rains: [rain1, rain2, rain3, rain4, rain5, rain6],
         rainIndex: 0,
-        face, map, location, peach, knowDetails, cloud,
+        orchard1,
+        orchard2,
+        orchard3,
+        comment1,
+        comment2,
+        face, map, location, peach, knowDetails, cloud, thermometerAsh, thermometerRed, butbg, arrow,
         peach1,
         peach2,
         peach3,
@@ -239,6 +317,18 @@
           window.requestAnimationFrame(this.bindTouch)
         }
       },
+      changeTab(type) {
+
+        if (type) {
+          if (this.pageConfig.index < 2)
+            this.pageConfig.index++
+        } else {
+          if (this.pageConfig.index > 0)
+            this.pageConfig.index--
+
+        }
+
+      },
       touchHandle() {
         console.log(this.$refs.box)
         const dom = this.$refs.box.$el,
@@ -246,6 +336,7 @@
         console.log(dom)
         let Y = 0;
         this.touch({
+          stop: false,
           dom,
           start({y}) {
             Y = dom.style.transform ? parseFloat(dom.style.transform.split("(")[1]) : 0;
