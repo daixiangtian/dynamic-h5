@@ -8,9 +8,18 @@
         <h5-img :src="banner" :width="750-60" type="fill" :height="375"/>
       </h5-div>
     </h5-div>
-    <h5-div flex flex-wrap flex-bt v-for="i in 3" :key="i" :mar="[0,0,50]">
-      <h5-img :src="item.url" :width="120" :height="120" :fillet="120" v-for="(item,key) in buttons" :key="key"/>
+    <h5-div flex flex-wrap>
+      <h5-div  width="25%" :mar="[0,0,30,0]" flex flex-center v-for="(item,key) in buttons">
+        <h5-div :width="120" :height="120" :fillet="120" over-h br="1px solid #eee">
+          <h5-div class="trn-1" :mar="[0,0,0,key<=index?0:-120]" >
+            <h5-img :src="item.url"  :width="120" :height="120" :fillet="120" :key="key"/>
+          </h5-div>
+        </h5-div>
+
+      </h5-div>
     </h5-div>
+
+
 
   </h5-div>
 
@@ -37,8 +46,25 @@
           {url: button2},
           {url: button3},
           {url: button4},
-        ]
+          {url: button1},
+          {url: button2},
+          {url: button3},
+          {url: button4},
+          {url: button1},
+          {url: button2},
+          {url: button3},
+          {url: button4},
+        ],
+        index:-1,
       }
+    },
+    created() {
+     const interval =setInterval(()=>{
+       this.index++
+       if(this.index>=12){
+         window.clearInterval(interval)
+       }
+     },100)
     }
   }
 </script>

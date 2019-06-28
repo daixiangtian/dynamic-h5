@@ -33,9 +33,7 @@
       }
     },
     created() {
-      if (this.$route.path == "/") {
-        this.goPointPage("/first")
-      }
+      this.goPointPage("/first")
 
       this.setMainColor('green')
     }

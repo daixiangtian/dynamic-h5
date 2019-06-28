@@ -97,6 +97,8 @@
         </h5-div>
         <h5-div :pad="[30,0,0]" posi-r z5 :height="200">
           <div v-if="pageConfig.index == 2">
+
+
             <h5-div posi-a l0 class="sun parabola">
               <h5-img :src="sun" type="fidelity"
                       :width="264"></h5-img>
@@ -106,7 +108,25 @@
             <!--                      :width="220"></h5-img>-->
             <!--            </h5-div>-->
 
-            <h5-div class="cloud" posi-a r0 :mar="[120,0,0,-50]">
+            <h5-div flex flex-center>
+              <h5-div posi-a :mar="[100,0,0,50]" :bg="`url(${comment1})no-repeat 0 0 / 100% 100%`" :width="200" :height="120">
+                <h5-div t-c :mar="[0,0,20]">年平均降雨量</h5-div>
+                <h5-div  t-c col-main font-weight :font-size="32">1445mm
+                </h5-div>
+              </h5-div>
+            </h5-div>
+
+            <h5-div posi-a flex-center flex :mar="[260,0,0,50]" class="up-dwon" :op="0.8" :bg="`url(${comment1})no-repeat 0 0 / 100% 100%`" :width="240" :height="160">
+              <h5-div>
+                <h5-div t-c :mar="[0,0,10]">年平均日照长度</h5-div>
+                <h5-div  t-c col-main font-weight :font-size="32">1608hr
+                </h5-div>
+              </h5-div>
+
+            </h5-div>
+
+
+            <h5-div class="cloud" posi-a r0 :mar="[80,0,0,-50]">
               <h5-div :bg="`url(${cloud})no-repeat 0 0 / 100% 100%`" :width="300"
                       :height="115"/>
               <h5-div :bg="`url(${rains[rainIndex]})no-repeat 0 0/ 100% 100%`" :width="283" :height="182"/>
@@ -122,12 +142,28 @@
             <h5-div class="up-dwon" :bg="`url(${orchard3})no-repeat 0 0 / 100% 100%`" :width="160" :height="180"
                     :mar="[-80,0,0]"/>
             <h5-div class="up-dwon" :bg="`url(${orchard1})no-repeat 0 0 / 100% 100%`" :width="150" :height="180"/>
+
+            <h5-div posi-a flex-y-center :bg="`url(${comment2})no-repeat 0 0 / 100% 100%`" :width="200" :mar="[150,0,0]" :op="0.8" :pad="[10,0,10,30]" :height="150">
+              <h5-div>
+                <h5-div>总株数</h5-div>
+                <h5-div>挂果树株数</h5-div>
+                <h5-div col-main :font-size="32">190,000</h5-div>
+              </h5-div>
+            </h5-div>
+
           </h5-div>
         </h5-div>
 
 
-        <h5-div flex-center>
+        <h5-div flex-center posi-r :height="445">
           <h5-img :src="forest" type="fidelity" :width="680"/>
+          <h5-div posi-a flex flex-center :width="680" :height="445 ">
+            <h5-div :width="pageConfig.index == 1?338:0.001" class="trn-3" over-h :height="445 " posi-a r0>
+              <h5-img posi-a r0 :src="dayAndNight" type="fidelity" posi-a :width="680"/>
+            </h5-div>
+
+          </h5-div>
+
         </h5-div>
 
         <h5-div flex flex-bt flex-y-center>
@@ -145,7 +181,7 @@
                     <h5-img :src="sun" type="fidelity"
                             :width="264"></h5-img>
                   </h5-div>
-                  <h5-div posi-a r0 class="moon"  :class="pageConfig.index == 1?'parabola':''" :mar="[0,50,0]">
+                  <h5-div posi-a r0 class="moon" :class="pageConfig.index == 1?'parabola':''" :mar="[0,50,0]">
                     <h5-img :src="moon" type="fidelity"
                             :width="220"></h5-img>
                   </h5-div>
@@ -165,7 +201,6 @@
                   <h5-div color="#434343" :pad="[0,30,0,0]" t-r>年平均气温</h5-div>
                   <h5-div color="#79bc1f" :pad="[0,30,0,0]" :font-size="30">19℃</h5-div>
                 </h5-div>
-
               </h5-div>
               <h5-div :bg="`url(${thermometerAsh})no-repeat 0 0 / 100% 100%`" flex flex-y-center :width="329"
                       :height="18">
@@ -246,6 +281,8 @@
   import orchard3 from "../../assets/images/first/orchard3.png"
   import comment1 from "../../assets/images/first/comment1.png"
   import comment2 from "../../assets/images/first/comment2.png"
+  import comment3 from "../../assets/images/first/comment3.png"
+  import dayAndNight from "../../assets/images/first/day-and-night.png"
 
   import knowDetails from "../../assets/images/first/know-details.png"
   import H5Img from "../../components/public/h5-img";
@@ -269,6 +306,8 @@
         orchard3,
         comment1,
         comment2,
+        comment3,
+        dayAndNight,
         face, map, location, peach, knowDetails, cloud, thermometerAsh, thermometerRed, butbg, arrow,
         peach1,
         peach2,
