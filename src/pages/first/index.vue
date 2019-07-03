@@ -1,246 +1,251 @@
 <template>
-  <h5-div class="posi-a trn-05" posi-f t0 b0 l0 r0 ref="box">
-    <h5-div mi-h="100vh" posi-r ref="firstPage">
-      <img :src="bgs[0]" w100 h100 posi-a t0 l0 :class="show?'d-n trn-1':'flicker'"/>
-      <h5-div flex-center posi-r t-c :pad="[200,0,0]">
-        <img :src="peach" class="trn-1" :class="[show&&'scale-x-y-8']" :width="250"/>
-        <img :src="peach1" posi-a l0 t0 class=" trn-1 h-320" :class="[!show&&'mar-t-0320']"/>
-        <img :src="peach2" posi-a r0 t0 class=" trn-1 h-300 mar-r-30" :class="[!show&&'mar-t-0320']"/>
-        <img :src="peach3" posi-a l0 t40 class="w-160 trn-1" :class="[!show&&'mar-l-0160']"/>
-        <img :src="peach5" posi-a r0 t40 class="w-160 trn-1" :class="[!show&&'mar-r-0160']"/>
-      </h5-div>
-      <div posi-r class="trn-1" :class="[show&&'desc-n']" v-if="showInfo">
-        <h5-div :fontSize="48" class="col-main" t-c fon-wb>麻阳高山“锦绣”黄桃</h5-div>
-        <h5-div color="#fff" :fontSize="22" class="bg-main" :mar="[16,100]" :height="40" flex-center t-c>
-          颜色红颜・肉质饱满・果汁浓甜・纯香绕口
+  <h5-div posi-f t0 l0 r0 b0 ref="box">
+    <h5-div class="trn-05">
+      <h5-div mi-h="100vh" posi-r ref="firstPage">
+        <img :src="bgs[0]" w100 h100 posi-a t0 l0 :class="show?'d-n trn-1':'flicker'"/>
+        <h5-div flex-center posi-r t-c :pad="[200,0,0]">
+          <img :src="peach" class="trn-1" :class="[show&&'scale-x-y-8']" :width="250"/>
+          <img :src="peach1" posi-a l0 t0 class=" trn-1 h-320" :class="[!show&&'mar-t-0320']"/>
+          <img :src="peach2" posi-a r0 t0 class=" trn-1 h-300 mar-r-30" :class="[!show&&'mar-t-0320']"/>
+          <img :src="peach3" posi-a l0 t40 class="w-160 trn-1" :class="[!show&&'mar-l-0160']"/>
+          <img :src="peach5" posi-a r0 t40 class="w-160 trn-1" :class="[!show&&'mar-r-0160']"/>
         </h5-div>
-        <h5-div class="col-main" :fontSize="33" :mar="[50,0,30]" t-c>种植在平均海拔500米以上的山坡</h5-div>
-        <h5-div fon-wb :fontSize="37" flex-center class="col-main">富硒小分子团水滋养的优质好果</h5-div>
-        <h5-div flex-center>
-          <h5-div :bg="`url(${knowDetails})no-repeat 0 0/100% 100%`" class="up-dwon" :height="120" :width="400"/>
+        <div posi-r class="trn-1" :class="[show&&'desc-n']" v-if="showInfo">
+          <h5-div :fontSize="48" class="col-main" t-c fon-wb>麻阳高山“锦绣”黄桃</h5-div>
+          <h5-div color="#fff" :fontSize="22" class="bg-main" :mar="[16,100]" :height="40" flex-center t-c>
+            颜色红颜・肉质饱满・果汁浓甜・纯香绕口
+          </h5-div>
+          <h5-div class="col-main" :fontSize="33" :mar="[50,0,30]" t-c>种植在平均海拔500米以上的山坡</h5-div>
+          <h5-div fon-wb :fontSize="37" flex-center class="col-main">富硒小分子团水滋养的优质好果</h5-div>
+          <h5-div flex-center>
+            <h5-div :bg="`url(${knowDetails})no-repeat 0 0/100% 100%`" class="up-dwon" :height="120" :width="400"/>
+          </h5-div>
+        </div>
+        <h5-div class=" trn-1" :class="showInfo?'op-0':'op-1'">
+          <h5-div :width="500" :mar="[0,'auto']" flex-x-center color="#fff" :height="50" :pad="[40,0,0]"
+                  :bg="`url(${query})no-repeat 0 0/100% 100%`" :font-size="18">
+            您当前查询的是麻阳高山“锦绣”黄桃信息
+          </h5-div>
+          <h5-div :fontSize="28" font-weight="bold" t-c :mar="[60,0,20]">
+            源自中国最美养生栖据地、中国长寿之乡
+          </h5-div>
+          <h5-div font-size="18" :line-height="36" :width="500" :mar="[0,'auto']">
+            没立方厘米负氧离子7000个以上，天然氧吧地
+            磁强度平均6.48高斯，天然磁化场！独特地理
+            小气候孕育出卓而不凡的优秀品质
+          </h5-div>
         </h5-div>
-      </div>
-      <h5-div class=" trn-1" :class="showInfo?'op-0':'op-1'">
-        <h5-div :width="500" :mar="[0,'auto']" flex-x-center color="#fff" :height="50" :pad="[40,0,0]"
-                :bg="`url(${query})no-repeat 0 0/100% 100%`" :font-size="18">
-          您当前查询的是麻阳高山“锦绣”黄桃信息
-        </h5-div>
-        <h5-div :fontSize="28" font-weight="bold" t-c :mar="[60,0,20]">
-          源自中国最美养生栖据地、中国长寿之乡
-        </h5-div>
-        <h5-div font-size="18" :line-height="36" :width="500" :mar="[0,'auto']">
-          没立方厘米负氧离子7000个以上，天然氧吧地
-          磁强度平均6.48高斯，天然磁化场！独特地理
-          小气候孕育出卓而不凡的优秀品质
-        </h5-div>
-      </h5-div>
-      <h5-img :src="peach6"
-              posi-a b0 l0
-              type="fill"
-              :height="264"
-              :width="159"
-              class="trn-1"
-              :class="!show&&'peach6'"
-      />
-      <h5-div posi-a b0 l0 r0 flex-x-center>
-        <h5-img :src="peach7"
+        <h5-img :src="peach6"
+                posi-a b0 l0
                 type="fill"
                 :height="264"
-                :width="264"
+                :width="159"
                 class="trn-1"
-                :class="!show&&'peach7'"
+                :class="!show&&'peach6'"
         />
+        <h5-div posi-a b0 l0 r0 flex-x-center>
+          <h5-img :src="peach7"
+                  type="fill"
+                  :height="264"
+                  :width="264"
+                  class="trn-1"
+                  :class="!show&&'peach7'"
+          />
 
+        </h5-div>
+
+        <h5-img
+          :src="peach8"
+          posi-a b0 r0
+          type="fill"
+          :height="264"
+          :width="159"
+          class="trn-1"
+          :class="!show&&'peach8'"
+        />
       </h5-div>
-
-      <h5-img
-        :src="peach8"
-        posi-a b0 r0
-        type="fill"
-        :height="264"
-        :width="159"
-        class="trn-1"
-        :class="!show&&'peach8'"
-      />
-    </h5-div>
-    <div v-if="show">
-      <h5-div height="100vh">
-        <h5-div flex-center :pad="[100,0,0]">
-          <h5-img :width="117" type="fill" :height="125" :src="face"/>
-          <h5-div t-c :mar="[0,30]">
-            <h5-div fontSize="28" :mar="[0,0,20]" flex-center>来自农户
-              <h5-div fontSize="28" class="col-main">腾明学</h5-div>
-              果园
-            </h5-div>
-            <h5-div fontSize="28" col-main>湖南省怀化市麻阳县兰里镇横喇基地</h5-div>
-          </h5-div>
-        </h5-div>
-        <h5-div flex-x-center :mar="[50,0]" posi-r>
-          <h5-img :src="map" type="fidelity" :width="680"/>
-          <h5-div posi-a b0 color="#fff" :mar="[0,0,140,100]" font-size="20" t-c flex-column flex-y-center>
-            <h5-img :src="location" type="fidelity" :width="48" class="up-dwon"/>
-            湖南麻阳
-          </h5-div>
-        </h5-div>
-      </h5-div>
-
-
-      <h5-div height="100vh">
-        <h5-div flex :pad="[120,120,0]">
-          <h5-img :width="117" type="fill" :height="125" :src="face"/>
-          <h5-div t-c :mar="[-75,30,0]" :width="450">
-            <h5-div fontSize="30" class="col-main" :mar="[0,0,20]" flex-center>
-              麻阳基地介绍
-            </h5-div>
-            <h5-div fontSize="30" font-weight="bold" col-main>2019年气候追溯</h5-div>
-          </h5-div>
-        </h5-div>
-        <h5-div :pad="[30,0,0]" posi-r z5 :height="200">
-          <div v-if="pageConfig.index == 2">
-
-
-            <h5-div posi-a l0 class="sun parabola">
-              <h5-img :src="sun" type="fidelity"
-                      :width="264"></h5-img>
-            </h5-div>
-            <!--            <h5-div posi-a r0 class="moon parabola" :mar="[0,50,0]">-->
-            <!--              <h5-img :src="moon" type="fidelity"-->
-            <!--                      :width="220"></h5-img>-->
-            <!--            </h5-div>-->
-
-            <h5-div flex flex-center>
-              <h5-div posi-a :mar="[100,0,0,50]" :bg="`url(${comment1})no-repeat 0 0 / 100% 100%`" :width="200" :height="120">
-                <h5-div t-c :mar="[0,0,20]">年平均降雨量</h5-div>
-                <h5-div  t-c col-main font-weight :font-size="32">1445mm
-                </h5-div>
+      <div v-if="show">
+        <h5-div height="100vh">
+          <h5-div flex-center :pad="[100,0,0]">
+            <h5-img :width="117" type="fill" :height="125" :src="face"/>
+            <h5-div t-c :mar="[0,30]">
+              <h5-div fontSize="28" :mar="[0,0,20]" flex-center>来自农户
+                <h5-div fontSize="28" class="col-main">腾明学</h5-div>
+                果园
               </h5-div>
+              <h5-div fontSize="28" col-main>湖南省怀化市麻阳县兰里镇横喇基地</h5-div>
             </h5-div>
+          </h5-div>
+          <h5-div flex-x-center :mar="[50,0]" posi-r>
+            <h5-img :src="map" type="fidelity" :width="680"/>
+            <h5-div posi-a b0 color="#fff" :mar="[0,0,140,100]" font-size="20" t-c flex-column flex-y-center>
+              <h5-img :src="location" type="fidelity" :width="48" class="up-dwon"/>
+              湖南麻阳
+            </h5-div>
+          </h5-div>
+        </h5-div>
 
-            <h5-div posi-a flex-center flex :mar="[260,0,0,50]" class="up-dwon" :op="0.8" :bg="`url(${comment1})no-repeat 0 0 / 100% 100%`" :width="240" :height="160">
-              <h5-div>
-                <h5-div t-c :mar="[0,0,10]">年平均日照长度</h5-div>
-                <h5-div  t-c col-main font-weight :font-size="32">1608hr
-                </h5-div>
+
+        <h5-div height="100vh">
+          <h5-div flex :pad="[120,120,0]">
+            <h5-img :width="117" type="fill" :height="125" :src="face"/>
+            <h5-div t-c :mar="[-75,30,0]" :width="450">
+              <h5-div fontSize="30" class="col-main" :mar="[0,0,20]" flex-center>
+                麻阳基地介绍
               </h5-div>
-
+              <h5-div fontSize="30" font-weight="bold" col-main>2019年气候追溯</h5-div>
             </h5-div>
+          </h5-div>
+          <h5-div :pad="[30,0,0]" posi-r z5 :height="200">
+            <div v-if="pageConfig.index == 2">
 
 
-            <h5-div class="cloud" posi-a r0 :mar="[80,0,0,-50]">
-              <h5-div :bg="`url(${cloud})no-repeat 0 0 / 100% 100%`" :width="300"
-                      :height="115"/>
-              <h5-div :bg="`url(${rains[rainIndex]})no-repeat 0 0/ 100% 100%`" :width="283" :height="182"/>
-            </h5-div>
-          </div>
-        </h5-div>
-
-
-        <h5-div flex flex-center posi-r z5 :mar="[0,0,-170]">
-          <h5-div flex flex-bt :width="600" class="trn-2 op-0" :class="pageConfig.index == 0 &&'op-1'">
-            <h5-div class="up-dwon" :bg="`url(${orchard2})no-repeat 0 0 / 100% 100%`" :width="150" :height="180"
-                    :mar="[-40,0,0]"/>
-            <h5-div class="up-dwon" :bg="`url(${orchard3})no-repeat 0 0 / 100% 100%`" :width="160" :height="180"
-                    :mar="[-80,0,0]"/>
-            <h5-div class="up-dwon" :bg="`url(${orchard1})no-repeat 0 0 / 100% 100%`" :width="150" :height="180"/>
-
-            <h5-div posi-a flex-y-center :bg="`url(${comment2})no-repeat 0 0 / 100% 100%`" :width="200" :mar="[150,0,0]" :op="0.8" :pad="[10,0,10,30]" :height="150">
-              <h5-div>
-                <h5-div>总株数</h5-div>
-                <h5-div>挂果树株数</h5-div>
-                <h5-div col-main :font-size="32">190,000</h5-div>
+              <h5-div posi-a l0 class="sun parabola">
+                <h5-img :src="sun" type="fidelity"
+                        :width="264"></h5-img>
               </h5-div>
-            </h5-div>
+              <!--            <h5-div posi-a r0 class="moon parabola" :mar="[0,50,0]">-->
+              <!--              <h5-img :src="moon" type="fidelity"-->
+              <!--                      :width="220"></h5-img>-->
+              <!--            </h5-div>-->
 
-          </h5-div>
-        </h5-div>
-
-
-        <h5-div flex-center posi-r :height="445">
-          <h5-img :src="forest" type="fidelity" :width="680"/>
-          <h5-div posi-a flex flex-center :width="680" :height="445 ">
-            <h5-div :width="pageConfig.index == 1?338:0.001" class="trn-3" over-h :height="445 " posi-a r0>
-              <h5-img posi-a r0 :src="dayAndNight" type="fidelity" posi-a :width="680"/>
-            </h5-div>
-
-          </h5-div>
-
-        </h5-div>
-
-        <h5-div flex flex-bt flex-y-center>
-          <h5-div
-            @click="changeTab()"
-            :width="63" flex flex-center trn-rotate-y-180 :height="143"
-            :bg="`url(${butbg})no-repeat 0 0 / 100% 100%`">
-            <h5-div :bg="`url(${arrow})no-repeat 0 0 / 100% 100%`" :width="23" :height="42"/>
-          </h5-div>
-          <h5-div>
-            <h5-div flex flex-center posi-r class="trn-1" :class="pageConfig.index == 1?'op-1':'op-0'">
-              <h5-div posi-a :mar="[-500,0,0]" :width="680">
-                <h5-div flex posi-a flex-bt :mar="[-180,0,0]" width="100%">
-                  <h5-div posi-a l0 class="sun " :class="pageConfig.index == 1?'parabola':''">
-                    <h5-img :src="sun" type="fidelity"
-                            :width="264"></h5-img>
-                  </h5-div>
-                  <h5-div posi-a r0 class="moon" :class="pageConfig.index == 1?'parabola':''" :mar="[0,50,0]">
-                    <h5-img :src="moon" type="fidelity"
-                            :width="220"></h5-img>
-                  </h5-div>
-                </h5-div>
-                <h5-div :width="200" class="up-dwon" :mar="[0,'auto']" :height="126" flex-x-end flex flex-y-center
-                        :bg="`url(${comment1})no-repeat 0 0 / 100% 100%`">
-                  <h5-div t-c width="100%">
-                    <h5-div color="#434343" :pad="[0,30,0,0]" t-r>昼夜最大温差</h5-div>
-                    <h5-div t-r color="#79bc1f" :pad="[0,30,0,0]" :font-size="30">21℃</h5-div>
+              <h5-div flex flex-center>
+                <h5-div posi-a :mar="[100,0,0,50]" :bg="`url(${comment1})no-repeat 0 0 / 100% 100%`" :width="200"
+                        :height="120">
+                  <h5-div t-c :mar="[0,0,20]">年平均降雨量</h5-div>
+                  <h5-div t-c col-main font-weight :font-size="32">1445mm
                   </h5-div>
                 </h5-div>
               </h5-div>
 
-              <h5-div :width="180" :height="126" flex-x-end :mar="[0,30,0,0]" flex flex-y-center
-                      :bg="`url(${comment2})no-repeat 0 0 / 100% 100%`">
-                <h5-div t-r width="100%">
-                  <h5-div color="#434343" :pad="[0,30,0,0]" t-r>年平均气温</h5-div>
-                  <h5-div color="#79bc1f" :pad="[0,30,0,0]" :font-size="30">19℃</h5-div>
-                </h5-div>
-              </h5-div>
-              <h5-div :bg="`url(${thermometerAsh})no-repeat 0 0 / 100% 100%`" flex flex-y-center :width="329"
-                      :height="18">
-                <h5-div class="trn-2" over-h :width="pageConfig.index == 1?329:10" :height="15">
-                  <h5-div :bg="`url(${thermometerRed})no-repeat 0 0 / 100% 100% `" :width="221" :height="15"/>
-                </h5-div>
-
-              </h5-div>
-            </h5-div>
-          </h5-div>
-
-          <h5-div
-            @click="changeTab(true)"
-            :width="63" flex flex-center :height="143" :bg="`url(${butbg})no-repeat 0 0 / 100% 100%`">
-            <h5-div :bg="`url(${arrow})no-repeat 0 0 / 100% 100%`" :width="23" :height="42"/>
-          </h5-div>
-        </h5-div>
-
-
-        <h5-div flex flex-center>
-          <h5-div flex>
-            <h5-div :width="150" flex-center flex :height="150" :fillet="200"
-                    v-for="(item,key) in pageConfig.tabConfig" :key="key"
-                    @click="pageConfig.index = key"
-                    :br="pageConfig.index == key?`1px solid green`:'1px solid #999'" :mar="[0,30]">
-              <h5-div t-c>
+              <h5-div posi-a flex-center flex :mar="[260,0,0,50]" class="up-dwon" :op="0.8"
+                      :bg="`url(${comment1})no-repeat 0 0 / 100% 100%`" :width="240" :height="160">
                 <h5-div>
-                  <h5-div :font-size="56" :mar="[0,0,10]" class="iconfont"
-                          :class="[pageConfig.index == key?'col-main':'col-9',item.icon]"></h5-div>
+                  <h5-div t-c :mar="[0,0,10]">年平均日照长度</h5-div>
+                  <h5-div t-c col-main font-weight :font-size="32">1608hr
+                  </h5-div>
                 </h5-div>
-                <h5-div :class="pageConfig.index == key?'col-main':'col-9'">{{item.name}}</h5-div>
+
               </h5-div>
+
+
+              <h5-div class="cloud" posi-a r0 :mar="[80,0,0,-50]">
+                <h5-div :bg="`url(${cloud})no-repeat 0 0 / 100% 100%`" :width="300"
+                        :height="115"/>
+                <h5-div :bg="`url(${rains[rainIndex]})no-repeat 0 0/ 100% 100%`" :width="283" :height="182"/>
+              </h5-div>
+            </div>
+          </h5-div>
+
+
+          <h5-div flex flex-center posi-r z5 :mar="[0,0,-170]">
+            <h5-div flex flex-bt :width="600" class="trn-2 op-0" :class="pageConfig.index == 0 &&'op-1'">
+              <h5-div class="up-dwon" :bg="`url(${orchard2})no-repeat 0 0 / 100% 100%`" :width="150" :height="180"
+                      :mar="[-40,0,0]"/>
+              <h5-div class="up-dwon" :bg="`url(${orchard3})no-repeat 0 0 / 100% 100%`" :width="160" :height="180"
+                      :mar="[-80,0,0]"/>
+              <h5-div class="up-dwon" :bg="`url(${orchard1})no-repeat 0 0 / 100% 100%`" :width="150" :height="180"/>
+
+              <h5-div posi-a flex-y-center :bg="`url(${comment2})no-repeat 0 0 / 100% 100%`" :width="200"
+                      :mar="[150,0,0]" :op="0.8" :pad="[10,0,10,30]" :height="150">
+                <h5-div>
+                  <h5-div>总株数</h5-div>
+                  <h5-div>挂果树株数</h5-div>
+                  <h5-div col-main :font-size="32">190,000</h5-div>
+                </h5-div>
+              </h5-div>
+
+            </h5-div>
+          </h5-div>
+
+
+          <h5-div flex-center posi-r :height="445">
+            <h5-img :src="forest" type="fidelity" :width="680"/>
+            <h5-div posi-a flex flex-center :width="680" :height="445 ">
+              <h5-div :width="pageConfig.index == 1?338:0.001" class="trn-3" over-h :height="445 " posi-a r0>
+                <h5-img posi-a r0 :src="dayAndNight" type="fidelity" posi-a :width="680"/>
+              </h5-div>
+
+            </h5-div>
+
+          </h5-div>
+
+          <h5-div flex flex-bt flex-y-center>
+            <h5-div
+              @click="changeTab()"
+              :width="63" flex flex-center trn-rotate-y-180 :height="143"
+              :bg="`url(${butbg})no-repeat 0 0 / 100% 100%`">
+              <h5-div :bg="`url(${arrow})no-repeat 0 0 / 100% 100%`" :width="23" :height="42"/>
+            </h5-div>
+            <h5-div>
+              <h5-div flex flex-center posi-r class="trn-1" :class="pageConfig.index == 1?'op-1':'op-0'">
+                <h5-div posi-a :mar="[-500,0,0]" :width="680">
+                  <h5-div flex posi-a flex-bt :mar="[-180,0,0]" width="100%">
+                    <h5-div posi-a l0 class="sun " :class="pageConfig.index == 1?'parabola':''">
+                      <h5-img :src="sun" type="fidelity"
+                              :width="264"></h5-img>
+                    </h5-div>
+                    <h5-div posi-a r0 class="moon" :class="pageConfig.index == 1?'parabola':''" :mar="[0,50,0]">
+                      <h5-img :src="moon" type="fidelity"
+                              :width="220"></h5-img>
+                    </h5-div>
+                  </h5-div>
+                  <h5-div :width="200" class="up-dwon" :mar="[0,'auto']" :height="126" flex-x-end flex flex-y-center
+                          :bg="`url(${comment1})no-repeat 0 0 / 100% 100%`">
+                    <h5-div t-c width="100%">
+                      <h5-div color="#434343" :pad="[0,30,0,0]" t-r>昼夜最大温差</h5-div>
+                      <h5-div t-r color="#79bc1f" :pad="[0,30,0,0]" :font-size="30">21℃</h5-div>
+                    </h5-div>
+                  </h5-div>
+                </h5-div>
+
+                <h5-div :width="180" :height="126" flex-x-end :mar="[0,30,0,0]" flex flex-y-center
+                        :bg="`url(${comment2})no-repeat 0 0 / 100% 100%`">
+                  <h5-div t-r width="100%">
+                    <h5-div color="#434343" :pad="[0,30,0,0]" t-r>年平均气温</h5-div>
+                    <h5-div color="#79bc1f" :pad="[0,30,0,0]" :font-size="30">19℃</h5-div>
+                  </h5-div>
+                </h5-div>
+                <h5-div :bg="`url(${thermometerAsh})no-repeat 0 0 / 100% 100%`" flex flex-y-center :width="329"
+                        :height="18">
+                  <h5-div class="trn-2" over-h :width="pageConfig.index == 1?329:10" :height="15">
+                    <h5-div :bg="`url(${thermometerRed})no-repeat 0 0 / 100% 100% `" :width="221" :height="15"/>
+                  </h5-div>
+
+                </h5-div>
+              </h5-div>
+            </h5-div>
+
+            <h5-div
+              @click="changeTab(true)"
+              :width="63" flex flex-center :height="143" :bg="`url(${butbg})no-repeat 0 0 / 100% 100%`">
+              <h5-div :bg="`url(${arrow})no-repeat 0 0 / 100% 100%`" :width="23" :height="42"/>
+            </h5-div>
+          </h5-div>
+
+
+          <h5-div flex flex-center>
+            <h5-div flex>
+              <h5-div :width="150" flex-center flex :height="150" :fillet="200"
+                      v-for="(item,key) in pageConfig.tabConfig" :key="key"
+                      @click="pageConfig.index = key"
+                      :br="pageConfig.index == key?`1px solid green`:'1px solid #999'" :mar="[0,30]">
+                <h5-div t-c>
+                  <h5-div>
+                    <h5-div :font-size="56" :mar="[0,0,10]" class="iconfont"
+                            :class="[pageConfig.index == key?'col-main':'col-9',item.icon]"></h5-div>
+                  </h5-div>
+                  <h5-div :class="pageConfig.index == key?'col-main':'col-9'">{{item.name}}</h5-div>
+                </h5-div>
+              </h5-div>
+
             </h5-div>
 
           </h5-div>
 
         </h5-div>
-
-      </h5-div>
-    </div>
+      </div>
+    </h5-div>
   </h5-div>
 </template>
 <script>
@@ -292,6 +297,7 @@
     components: {H5Img, H5Div},
     data() {
       return {
+        Wheight : window.screen.height,
         show: false,
         showInfo: true,
         bgs: [
@@ -369,14 +375,13 @@
 
       },
       touchHandle() {
-        console.log(this.$refs.box)
-        const dom = this.$refs.box.$el,
+        const box = this.$refs.box.$el,
+          dom = box.firstChild,
           self = this;
-        console.log(dom)
         let Y = 0;
         this.touch({
           stop: false,
-          dom,
+          dom: box,
           start({y}) {
             Y = dom.style.transform ? parseFloat(dom.style.transform.split("(")[1]) : 0;
 
@@ -418,9 +423,7 @@
                 }
                 break;
             }
-
-
-            dom.style.transform = `translateY(${self.index * window.screen.height}px)`
+            dom.style.transform = `translateY(${self.index * box.clientHeight}px)`
           }
         })
 

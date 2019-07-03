@@ -3,7 +3,6 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import VueScroller from "vue-scroller"
 import {store} from './store'
 
 import {PlugIn} from './plugIn/plugin'
@@ -11,7 +10,6 @@ import {PlugIn} from './plugIn/plugin'
 Vue.config.productionTip = false
 
 Vue.use(PlugIn)
-Vue.use(VueScroller)
 
 /* eslint-disable no-new */
 new Vue({
