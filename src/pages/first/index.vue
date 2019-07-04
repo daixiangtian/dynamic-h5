@@ -77,7 +77,7 @@
             </h5-div>
           </h5-div>
           <h5-div flex-x-center :mar="[50,0]" posi-r>
-            <h5-img :src="map" type="fidelity" :width="680"/>
+            <h5-img :src="map" type="fidelity" :width="640"/>
             <h5-div posi-a b0 color="#fff" :mar="[0,0,140,100]" font-size="20" t-c flex-column flex-y-center>
               <h5-img :src="location" type="fidelity" :width="48" class="up-dwon"/>
               湖南麻阳
@@ -87,9 +87,9 @@
 
 
         <h5-div height="100vh">
-          <h5-div flex :pad="[100,120,0]">
+          <h5-div flex :pad="[60,120,0]">
             <h5-img :width="117" type="fill" :height="125" :src="face"/>
-            <h5-div t-c :mar="[-75,30,0]" :width="450">
+            <h5-div t-c :mar="[-30,30,0]" :width="450">
               <h5-div fontSize="30" class="col-main" :mar="[0,0,20]" flex-center>
                 麻阳基地介绍
               </h5-div>
@@ -143,7 +143,7 @@
               <h5-div class="up-dwon" :bg="`url(${orchard2})no-repeat 0 0 / 100% 100%`" :width="150" :height="180"
                       :mar="[-40,0,0]"/>
               <h5-div class="up-dwon" :bg="`url(${orchard3})no-repeat 0 0 / 100% 100%`" :width="160" :height="180"
-                      :mar="[-80,0,0]"/>
+                      :mar="[-40,0,0]"/>
               <h5-div class="up-dwon" :bg="`url(${orchard1})no-repeat 0 0 / 100% 100%`" :width="150" :height="180"/>
 
               <h5-div posi-a flex-y-center :bg="`url(${comment2})no-repeat 0 0 / 100% 100%`" :width="200"
@@ -159,11 +159,11 @@
           </h5-div>
 
 
-          <h5-div flex-center posi-r :height="445">
-            <h5-img :src="forest" type="fidelity" :width="680"/>
-            <h5-div posi-a flex flex-center :width="680" :height="445 ">
-              <h5-div :width="pageConfig.index == 1?338:0.001" class="trn-3" over-h :height="445 " posi-a r0>
-                <h5-img posi-a r0 :src="dayAndNight" type="fidelity" posi-a :width="680"/>
+          <h5-div flex-center posi-r :height="400">
+            <h5-img :src="forest" type="fidelity" :width="640"/>
+            <h5-div posi-a flex flex-center :width="640" :height="400 ">
+              <h5-div :width="pageConfig.index == 1?338:0.001" class="trn-3" over-h :height="400 " posi-a r0>
+                <h5-img posi-a r0 :src="dayAndNight" type="fidelity" posi-a :width="640"/>
               </h5-div>
 
             </h5-div>
@@ -180,7 +180,7 @@
             </h5-div>
             <h5-div>
               <h5-div flex flex-center posi-r class="trn-1" :class="pageConfig.index == 1?'op-1':'op-0'">
-                <h5-div posi-a :mar="[-500,0,0]" :width="680">
+                <h5-div posi-a :mar="[-500,0,0]" :width="640">
                   <h5-div flex posi-a flex-bt :mar="[-180,0,0]" width="100%">
                     <h5-div posi-a l0 class="sun " :class="pageConfig.index == 1?'parabola':''">
                       <h5-img :src="sun" type="fidelity"
@@ -191,9 +191,9 @@
                               :width="220"></h5-img>
                     </h5-div>
                   </h5-div>
-                  <h5-div :width="200" class="up-dwon" :mar="[0,'auto']" :height="126" flex-x-end flex flex-y-center
+                  <h5-div :width="200"  class="up-dwon" :mar="[0,'auto',-100]" :height="126" flex-x-end flex flex-y-center
                           :bg="`url(${comment1})no-repeat 0 0 / 100% 100%`">
-                    <h5-div t-c width="100%">
+                    <h5-div t-c width="100%" >
                       <h5-div color="#434343" :pad="[0,30,0,0]" t-r>昼夜最大温差</h5-div>
                       <h5-div t-r color="#79bc1f" :pad="[0,30,0,0]" :font-size="30">21℃</h5-div>
                     </h5-div>
