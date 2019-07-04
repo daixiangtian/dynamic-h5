@@ -11,6 +11,7 @@
   import {Icon} from "./config/iconfont"
   import H5Div from "./components/public/h5-div";
 
+
   export default {
     name: 'App',
     components: {H5Div, Footer},

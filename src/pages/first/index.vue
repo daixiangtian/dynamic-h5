@@ -87,7 +87,7 @@
 
 
         <h5-div height="100vh">
-          <h5-div flex :pad="[120,120,0]">
+          <h5-div flex :pad="[100,120,0]">
             <h5-img :width="117" type="fill" :height="125" :src="face"/>
             <h5-div t-c :mar="[-75,30,0]" :width="450">
               <h5-div fontSize="30" class="col-main" :mar="[0,0,20]" flex-center>
@@ -96,7 +96,7 @@
               <h5-div fontSize="30" font-weight="bold" col-main>2019年气候追溯</h5-div>
             </h5-div>
           </h5-div>
-          <h5-div :pad="[30,0,0]" posi-r z5 :height="200">
+          <h5-div :pad="[10,0,0]" posi-r z5 :height="200">
             <div v-if="pageConfig.index == 2">
 
 
@@ -172,6 +172,7 @@
 
           <h5-div flex flex-bt flex-y-center>
             <h5-div
+              ref="tabOne"
               @click="changeTab()"
               :width="63" flex flex-center trn-rotate-y-180 :height="143"
               :bg="`url(${butbg})no-repeat 0 0 / 100% 100%`">
@@ -217,6 +218,7 @@
             </h5-div>
 
             <h5-div
+              ref="tabTwo"
               @click="changeTab(true)"
               :width="63" flex flex-center :height="143" :bg="`url(${butbg})no-repeat 0 0 / 100% 100%`">
               <h5-div :bg="`url(${arrow})no-repeat 0 0 / 100% 100%`" :width="23" :height="42"/>
@@ -228,6 +230,7 @@
             <h5-div flex>
               <h5-div :width="150" flex-center flex :height="150" :fillet="200"
                       v-for="(item,key) in pageConfig.tabConfig" :key="key"
+                      :ref="`tab${key}`"
                       @click="pageConfig.index = key"
                       :br="pageConfig.index == key?`1px solid green`:'1px solid #999'" :mar="[0,30]">
                 <h5-div t-c>
@@ -297,7 +300,7 @@
     components: {H5Img, H5Div},
     data() {
       return {
-        Wheight : window.screen.height,
+        Wheight: window.screen.height,
         show: false,
         showInfo: true,
         bgs: [
@@ -363,14 +366,13 @@
         }
       },
       changeTab(type) {
-
+        console.log("type", type);
         if (type) {
           if (this.pageConfig.index < 2)
             this.pageConfig.index++
         } else {
           if (this.pageConfig.index > 0)
             this.pageConfig.index--
-
         }
 
       },
@@ -380,16 +382,51 @@
           self = this;
         let Y = 0;
         this.touch({
-          stop: false,
+          dom: self.$refs.tabOne.$el,
+          end() {
+            if (self.pageConfig.index > 0)
+              self.pageConfig.index--
+          }
+        })
+        this.touch({
+          dom: self.$refs.tabTwo.$el,
+          end() {
+            if (self.pageConfig.index < 2)
+              self.pageConfig.index++
+          }
+        })
+        this.touch({
+          dom: self.$refs.tab0[0].$el,
+          end() {
+            self.pageConfig.index = 0
+          }
+        })
+        this.touch({
+          dom: self.$refs.tab1[0].$el,
+          end() {
+            self.pageConfig.index = 1
+          }
+        })
+        this.touch({
+          dom: self.$refs.tab2[0].$el,
+          end() {
+            if (self.pageConfig.index < 2)
+              self.pageConfig.index = 2
+          }
+        })
+
+
+        this.touch({
           dom: box,
           start({y}) {
-            Y = dom.style.transform ? parseFloat(dom.style.transform.split("(")[1]) : 0;
+            console.log("document.documentElement.style", document.documentElement.style)
+            Y = (dom.style.transform ? parseFloat(dom.style.transform.split("(")[1]) : 0) * parseFloat(document.documentElement.style.fontSize);
 
             console.log("y===>", Y)
             dom.style.transition = '0ms'
           },
           move({dy}) {
-            dom.style.transform = `translateY(${dy + Y}px)`
+            dom.style.transform = `translateY(${(dy + Y) / parseFloat(document.documentElement.style.fontSize)}rem)`
           },
           change({direction}) {
             dom.style.transition = '500ms'
@@ -411,8 +448,6 @@
 
                   }
                   self.pageConfig.showSunAndMoon = true
-
-
                   self.index = -2
                 }
                 break;
@@ -423,7 +458,7 @@
                 }
                 break;
             }
-            dom.style.transform = `translateY(${self.index * box.clientHeight}px)`
+            dom.style.transform = `translateY(${(self.index) * box.clientHeight / parseFloat(document.documentElement.style.fontSize)}rem)`
           }
         })
 
