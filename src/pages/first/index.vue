@@ -191,9 +191,10 @@
                               :width="220"></h5-img>
                     </h5-div>
                   </h5-div>
-                  <h5-div :width="200"  class="up-dwon" :mar="[0,'auto',-100]" :height="126" flex-x-end flex flex-y-center
+                  <h5-div :width="200" class="up-dwon" :mar="[0,'auto',-100]" :height="126" flex-x-end flex
+                          flex-y-center
                           :bg="`url(${comment1})no-repeat 0 0 / 100% 100%`">
-                    <h5-div t-c width="100%" >
+                    <h5-div t-c width="100%">
                       <h5-div color="#434343" :pad="[0,30,0,0]" t-r>昼夜最大温差</h5-div>
                       <h5-div t-r color="#79bc1f" :pad="[0,30,0,0]" :font-size="30">21℃</h5-div>
                     </h5-div>
@@ -419,14 +420,13 @@
         this.touch({
           dom: box,
           start({y}) {
-            console.log("document.documentElement.style", document.documentElement.style)
-            Y = (dom.style.transform ? parseFloat(dom.style.transform.split("(")[1]) : 0) * parseFloat(document.documentElement.style.fontSize);
 
-            console.log("y===>", Y)
+            Y = (dom.style.transform ? parseFloat(dom.style.transform.split("(")[1]) : 0);
+
             dom.style.transition = '0ms'
           },
           move({dy}) {
-            dom.style.transform = `translateY(${(dy + Y) / parseFloat(document.documentElement.style.fontSize)}rem)`
+            dom.style.transform = `translateY(${(dy + Y)}px)`
           },
           change({direction}) {
             dom.style.transition = '500ms'
@@ -458,7 +458,7 @@
                 }
                 break;
             }
-            dom.style.transform = `translateY(${(self.index) * box.clientHeight / parseFloat(document.documentElement.style.fontSize)}rem)`
+            dom.style.transform = `translateY(${(self.index) * box.clientHeight}px)`
           }
         })
 
@@ -472,6 +472,10 @@
       // }
     },
     created() {
+      this.touch(
+        {
+          dom: window.document.body
+        })
       this.bindTouch()
     },
     destroyed() {
